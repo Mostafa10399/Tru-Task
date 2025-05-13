@@ -4,18 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "CoreKit",
+    name: "Corekit",
+    platforms: [.iOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "CoreKit",
-            targets: ["CoreKit"]),
+            name: "Corekit",
+            targets: ["Corekit"]),
+    ],
+    dependencies: [
+        .package(path: "../NetworkLayer"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "CoreKit"),
+            name: "Corekit",
+            dependencies: [
+                .product(name: "NetworkLayer", package: "NetworkLayer")
+            ]),
 
     ]
 )

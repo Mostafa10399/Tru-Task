@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 
 public typealias SendableCodable = Codable & Sendable
-public protocol RemoteAPI {
+public protocol RemoteAPI: Sendable {
     func request<T: SendableCodable>(_ service: RemoteService) async throws -> T
 }
 

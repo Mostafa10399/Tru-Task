@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-public struct RequestConfiguration {
+public struct RequestConfiguration: Sendable {
 
     // MARK: - Properties
     
@@ -25,3 +25,5 @@ public struct RequestConfiguration {
         self.encoding = encoding
     }
 }
+
+public typealias UrlEncoding = URLEncoding
