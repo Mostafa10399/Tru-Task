@@ -6,7 +6,7 @@
 //
 
 
-struct Rating: Codable {
-    let rate: Double
-    let count: Int
+public struct Rating: Codable, Hashable, Sendable {
+    public let rate: Double
+    public let count: Int
 }

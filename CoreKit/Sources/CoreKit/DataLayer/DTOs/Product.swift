@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct Product: Codable, Sendable {
-    let id: Int
-    let title: String
-    let price: Double
-    let description, category: String
-    let image: String
-    let rating: Rating
+public struct Product: Codable, Sendable, Hashable {
+    public let id: Int
+    public let title: String
+    public let price: Double
+    public let description, category: String
+    public let image: URL?
+    public let rating: Rating
 }
 
 public typealias ProductList = [Product]

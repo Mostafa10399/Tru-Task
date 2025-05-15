@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0418C5222DD38A900096BD4D /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 0418C5212DD38A900096BD4D /* NetworkLayer */; };
-		0418C5652DD3AD010096BD4D /* Corekit in Frameworks */ = {isa = PBXBuildFile; productRef = 0418C5642DD3AD010096BD4D /* Corekit */; };
+		0418C6C82DD506720096BD4D /* Commons in Frameworks */ = {isa = PBXBuildFile; productRef = 0418C6C72DD506720096BD4D /* Commons */; };
+		0418C7E42DD511F60096BD4D /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0418C7E32DD511F60096BD4D /* CombineCocoa */; };
+		0418C9032DD60EA70096BD4D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0418C9022DD60EA70096BD4D /* Kingfisher */; };
+		042628982DD616C90005E1C9 /* Commons in Frameworks */ = {isa = PBXBuildFile; productRef = 042628972DD616C90005E1C9 /* Commons */; };
+		0426289B2DD617AE0005E1C9 /* Commons in Frameworks */ = {isa = PBXBuildFile; productRef = 0426289A2DD617AE0005E1C9 /* Commons */; };
+		0426289E2DD618180005E1C9 /* Corekit in Frameworks */ = {isa = PBXBuildFile; productRef = 0426289D2DD618180005E1C9 /* Corekit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +46,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0418C5652DD3AD010096BD4D /* Corekit in Frameworks */,
+				0426289E2DD618180005E1C9 /* Corekit in Frameworks */,
+				0418C6C82DD506720096BD4D /* Commons in Frameworks */,
+				0418C7E42DD511F60096BD4D /* CombineCocoa in Frameworks */,
+				0426289B2DD617AE0005E1C9 /* Commons in Frameworks */,
+				042628982DD616C90005E1C9 /* Commons in Frameworks */,
 				0418C5222DD38A900096BD4D /* NetworkLayer in Frameworks */,
+				0418C9032DD60EA70096BD4D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +96,12 @@
 			name = "Tru-Task";
 			packageProductDependencies = (
 				0418C5212DD38A900096BD4D /* NetworkLayer */,
-				0418C5642DD3AD010096BD4D /* Corekit */,
+				0418C6C72DD506720096BD4D /* Commons */,
+				0418C7E32DD511F60096BD4D /* CombineCocoa */,
+				0418C9022DD60EA70096BD4D /* Kingfisher */,
+				042628972DD616C90005E1C9 /* Commons */,
+				0426289A2DD617AE0005E1C9 /* Commons */,
+				0426289D2DD618180005E1C9 /* Corekit */,
 			);
 			productName = "Tru-Task";
 			productReference = 0418C4232DD3830B0096BD4D /* Tru-Task.app */;
@@ -118,7 +133,10 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				0418C5202DD38A900096BD4D /* XCLocalSwiftPackageReference "NetworkLayer" */,
-				0418C5632DD3AD010096BD4D /* XCLocalSwiftPackageReference "Corekit" */,
+				0418C7E22DD511F60096BD4D /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+				0418C9012DD60EA70096BD4D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				042628992DD617AE0005E1C9 /* XCLocalSwiftPackageReference "Commons" */,
+				0426289C2DD618180005E1C9 /* XCLocalSwiftPackageReference "Corekit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0418C4242DD3830B0096BD4D /* Products */;
@@ -163,7 +181,6 @@
 				INFOPLIST_FILE = "Tru-Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -191,7 +208,6 @@
 				INFOPLIST_FILE = "Tru-Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -354,18 +370,63 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = NetworkLayer;
 		};
-		0418C5632DD3AD010096BD4D /* XCLocalSwiftPackageReference "Corekit" */ = {
+		042628992DD617AE0005E1C9 /* XCLocalSwiftPackageReference "Commons" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Commons;
+		};
+		0426289C2DD618180005E1C9 /* XCLocalSwiftPackageReference "Corekit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Corekit;
 		};
 /* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0418C7E22DD511F60096BD4D /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
+		0418C9012DD60EA70096BD4D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		0418C5212DD38A900096BD4D /* NetworkLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NetworkLayer;
 		};
-		0418C5642DD3AD010096BD4D /* Corekit */ = {
+		0418C6C72DD506720096BD4D /* Commons */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Commons;
+		};
+		0418C7E32DD511F60096BD4D /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0418C7E22DD511F60096BD4D /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+		0418C9022DD60EA70096BD4D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0418C9012DD60EA70096BD4D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		042628972DD616C90005E1C9 /* Commons */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Commons;
+		};
+		0426289A2DD617AE0005E1C9 /* Commons */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Commons;
+		};
+		0426289D2DD618180005E1C9 /* Corekit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Corekit;
 		};
