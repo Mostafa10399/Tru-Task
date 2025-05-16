@@ -12,6 +12,7 @@ public final class HomeRootViewModel: GetProductsUsecase {
     private let navigator: GoToProductDetails
     private let productsSubject = CurrentValueSubject<ProductList, Never>([])
     private let errorMessagesSubject = PassthroughSubject<APIError, Never>()
+    public let errorPresentation = CurrentValueSubject<ErrorPresentation?, Never>(nil)
     private let isLoadingSubject = CurrentValueSubject<Bool, Never>(false)
     public let selectItemSubject = PassthroughSubject<IndexPath, Never>()
 
@@ -45,8 +46,8 @@ public final class HomeRootViewModel: GetProductsUsecase {
             do {
                 let products = try await self.getProducts()
                 self.productsSubject.send(products)
-            } catch {
-                print(error)
+            } catch let errorMessage as APIError {
+                errorMessagesSubject.send(errorMessage)
             }
         }
     }

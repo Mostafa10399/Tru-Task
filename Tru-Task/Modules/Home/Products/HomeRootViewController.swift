@@ -38,7 +38,7 @@ public class HomeRootViewController: NiblessViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-//        observeErrorMessages()
+        observeErrorMessages()
         bindViewModel()
         viewModel.getData()
         bindView()
@@ -75,18 +75,18 @@ public class HomeRootViewController: NiblessViewController {
             .store(in: &cancellables)
     }
     
-//    private func observeErrorMessages() {
-//        viewModel.errorMessagesPublisher
-//            .receive(on: DispatchQueue.main)
-//            .sink { [weak self] in
-//                guard let self = self else { return }
-//                self.present(
-//                    errorMessage: $0,
-//                    withPresentationState: self.viewModel.errorPresentation
-//                )
-//            }
-//            .store(in: &cancellables)
-//    }
+    private func observeErrorMessages() {
+        viewModel.errorMessagesPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                guard let self = self else { return }
+                self.present(
+                    errorMessage: $0,
+                    withPresentationState: self.viewModel.errorPresentation
+                )
+            }
+            .store(in: &cancellables)
+    }
 }
 
 // MARK: - Data Source Management
