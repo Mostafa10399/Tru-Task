@@ -6,7 +6,7 @@ final public class ProductCollectionCell: UICollectionViewCell, Reusable {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var rate: UILabel!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     private(set) public var productId: Int?
 
     public func configure(with item: Product) {
@@ -17,7 +17,7 @@ final public class ProductCollectionCell: UICollectionViewCell, Reusable {
         )
         productTitle.text = item.title
         rate.text = "\(item.rating.rate)"
-        price.text = "\(item.price)"
+        priceLabel.text = "\(item.price)"
     }
 
 }

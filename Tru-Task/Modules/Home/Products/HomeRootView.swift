@@ -97,7 +97,9 @@ class HomeRootView: NiblessView {
 
     // MARK: - Properties
 
-    let segmentedControl = UISegmentedControl(items: ["List", "Grid"])
+    let segmentedControl = UISegmentedControl(items: ["List", "Grid"]).with {
+        $0.selectedSegmentIndex = 0
+    }
 
     let tableView = UITableView(frame: .zero, style: .plain).with {
         $0.register(ProductCell.nib, forCellReuseIdentifier: ProductCell.reuseIdentifier)
@@ -126,7 +128,8 @@ class HomeRootView: NiblessView {
         collectionViewLayout: UICollectionViewFlowLayout().with {
             let spacing: CGFloat = 10
             let screenWidth = UIScreen.main.bounds.width
-            let itemWidth = (screenWidth - (spacing * 3)) / 2
+            let totalSpacing = spacing * 3
+            let itemWidth = (screenWidth - totalSpacing) / 2.5
             $0.itemSize = CGSize(width: itemWidth, height: 250)
             $0.minimumLineSpacing = spacing
             $0.minimumInteritemSpacing = spacing
@@ -156,7 +159,18 @@ class HomeRootView: NiblessView {
         $0.distribution = .fill
         $0.alignment = .fill
         $0.addArrangedSubview(segmentedControl)
-        $0.addArrangedSubview(tableView)
+        let container = UIView()
+        container.addSubview(tableView)
+        container.addSubview(collectionView)
+        
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        $0.addArrangedSubview(container)
     }
 
     // MARK: - Init
@@ -178,7 +192,8 @@ class HomeRootView: NiblessView {
         contentStackView.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(10)
             make.bottom.equalToSuperview()
-            make.right.left.equalTo(16)
+            make.left.equalTo(16)
+            make.right.equalTo(-16)
         }
     }
 

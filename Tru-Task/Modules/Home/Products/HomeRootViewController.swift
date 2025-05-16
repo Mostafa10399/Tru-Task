@@ -23,6 +23,7 @@ public class HomeRootViewController: NiblessViewController {
 
     // State
     private var cancellables: Set<AnyCancellable> = []
+    private var currentProducts: ProductList = []
 
     // MARK: - Methods
     init(view: HomeRootView, viewModel: HomeRootViewModel) {
@@ -40,7 +41,15 @@ public class HomeRootViewController: NiblessViewController {
 //        observeErrorMessages()
         bindViewModel()
         viewModel.getData()
-        customView.segmentedControl.selectedSegmentIndexPublisher.receive(subscriber: viewModel.selectedSegment) 
+        customView.segmentedControl.selectedSegmentIndexPublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] index in
+                guard let self else { return }
+                self.customView.tableView.isHidden = index != 0
+                self.customView.collectionView.isHidden = index == 0
+                self.applySnapshot() // apply to the right datasource
+            }
+            .store(in: &cancellables)
         customView.tableView.didSelectRowPublisher.receive(subscriber: viewModel.selectedItemSubscriber)
     }
     
@@ -54,7 +63,8 @@ public class HomeRootViewController: NiblessViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] products in
                 guard let self else { return }
-                self.updateSnapshot(with: products)
+                self.currentProducts = products
+                self.applySnapshot()
             }
             .store(in: &cancellables)
     }
@@ -75,6 +85,19 @@ public class HomeRootViewController: NiblessViewController {
 
 // MARK: - Data Source Management
 extension HomeRootViewController {
+    
+    private func applySnapshot() {
+        var snapshot = DataSourceSnapshot()
+        snapshot.appendSections(["Main"])
+        snapshot.appendItems(currentProducts, toSection: "Main")
+        
+        if customView.segmentedControl.selectedSegmentIndex == 0 {
+            datasource.apply(snapshot, animatingDifferences: false)
+        } else {
+            collectionDataSource.apply(snapshot, animatingDifferences: false)
+        }
+    }
+    
     private func makeCollectionDataSource() -> DataSourceCollectionView {
         return UICollectionViewDiffableDataSource(collectionView: customView.collectionView) { collectionView, indexPath, product in
             guard let cell = collectionView.dequeueReusableCell(
@@ -95,13 +118,6 @@ extension HomeRootViewController {
             cell.configure(with: product)
             return cell
         }
-    }
-    
-    private func updateSnapshot(with products: ProductList) {
-        var snapshot = DataSourceSnapshot()
-        snapshot.appendSections(["Main"])
-        snapshot.appendItems(products, toSection: "Main")
-        datasource.apply(snapshot, animatingDifferences: false)
     }
 }
 

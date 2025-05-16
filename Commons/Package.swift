@@ -21,7 +21,8 @@ let package = Package(
                 .product(name: "Kingfisher", package: "Kingfisher")
             ],
             resources: [
-                    .process("Cells/ProductCell/ProductCell.xib")
+                    .process("Cells/ProductCell/ProductCell.xib"),
+                    .process("Cells/ProductCollectionCell/ProductCollectionCell.xib")
                 ]
         ),
     ]
