@@ -74,29 +74,14 @@
                             </stackView>
                         </subviews>
                     </stackView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J08-KK-pPt">
-                        <rect key="frame" x="454" y="2" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="20" id="BDs-7t-ecU"/>
-                            <constraint firstAttribute="width" secondItem="J08-KK-pPt" secondAttribute="height" id="tI2-Wa-MrJ"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="J08-KK-pPt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="C69-Ef-0CD"/>
                     <constraint firstItem="hhr-tE-oGy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Mxe-2W-vEY"/>
                     <constraint firstAttribute="trailing" secondItem="hhr-tE-oGy" secondAttribute="trailing" constant="20" id="OMZ-BF-l3Y"/>
                     <constraint firstItem="D7Z-8g-8Ug" firstAttribute="width" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.2" id="ZOB-dE-yg3"/>
-                    <constraint firstAttribute="trailing" secondItem="J08-KK-pPt" secondAttribute="trailing" constant="5" id="dLE-iI-AL6"/>
-                    <constraint firstItem="J08-KK-pPt" firstAttribute="top" secondItem="hhr-tE-oGy" secondAttribute="top" id="gmE-GF-dZH"/>
                     <constraint firstItem="hhr-tE-oGy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="p21-7E-cg9"/>
                     <constraint firstAttribute="bottom" secondItem="hhr-tE-oGy" secondAttribute="bottom" constant="10" id="uYi-Ch-faF"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="gmE-GF-dZH"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

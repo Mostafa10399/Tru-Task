@@ -14,6 +14,8 @@ public final class HomeRootViewModel: GetProductsUsecase {
     private let errorMessagesSubject = PassthroughSubject<APIError, Never>()
     private let isLoadingSubject = CurrentValueSubject<Bool, Never>(false)
     public let selectItemSubject = PassthroughSubject<IndexPath, Never>()
+    public let selectSegmentSubject = PassthroughSubject<Int, Never>()
+
     
     public var productsPublisher: AnyPublisher<ProductList, Never> {
         productsSubject.eraseToAnyPublisher()
@@ -26,6 +28,9 @@ public final class HomeRootViewModel: GetProductsUsecase {
     }
     public var selectedItemSubscriber: AnySubscriber<IndexPath, Never> {
         AnySubscriber(selectItemSubject)
+    }
+    public var selectedSegment: AnySubscriber<Int, Never> {
+        AnySubscriber(selectSegmentSubject)
     }
     
     private var cancelables: Set<AnyCancellable> = []

@@ -11,12 +11,14 @@ public class HomeRootViewController: NiblessViewController {
     private let viewModel: HomeRootViewModel
     private let customView: HomeRootView
     // DataSource & DataSourceSnapShot TypeAlias
-    typealias DataSource = UITableViewDiffableDataSource<String, Product>
+    typealias DataSourceTableView = UITableViewDiffableDataSource<String, Product>
+    typealias DataSourceCollectionView = UICollectionViewDiffableDataSource<String, Product>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<String, Product>
     
         
     // DataSource & DataSourceSnapShot
     private lazy var datasource = makeDataSource()
+    private lazy var collectionDataSource = makeCollectionDataSource()
     private var datasourceSnapShot = DataSourceSnapshot()
 
     // State
@@ -38,6 +40,7 @@ public class HomeRootViewController: NiblessViewController {
 //        observeErrorMessages()
         bindViewModel()
         viewModel.getData()
+        customView.segmentedControl.selectedSegmentIndexPublisher.receive(subscriber: viewModel.selectedSegment) 
         customView.tableView.didSelectRowPublisher.receive(subscriber: viewModel.selectedItemSubscriber)
     }
     
@@ -72,10 +75,21 @@ public class HomeRootViewController: NiblessViewController {
 
 // MARK: - Data Source Management
 extension HomeRootViewController {
-    private func makeDataSource() -> DataSource {
+    private func makeCollectionDataSource() -> DataSourceCollectionView {
+        return UICollectionViewDiffableDataSource(collectionView: customView.collectionView) { collectionView, indexPath, product in
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProductCollectionCell.reuseIdentifier, for: indexPath
+            ) as? ProductCollectionCell else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: product)
+            return cell
+        }
+    }
+    
+    private func makeDataSource() -> DataSourceTableView {
         return UITableViewDiffableDataSource(tableView: customView.tableView) { tableView, indexPath, product in
-            print(ProductCell.reuseIdentifier)
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseIdentifier, for: indexPath) as? ProductCell else {
                 return UITableViewCell()
             }
             cell.configure(with: product)

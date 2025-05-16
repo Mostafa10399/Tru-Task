@@ -14,6 +14,7 @@
 		042628982DD616C90005E1C9 /* Commons in Frameworks */ = {isa = PBXBuildFile; productRef = 042628972DD616C90005E1C9 /* Commons */; };
 		0426289B2DD617AE0005E1C9 /* Commons in Frameworks */ = {isa = PBXBuildFile; productRef = 0426289A2DD617AE0005E1C9 /* Commons */; };
 		0426289E2DD618180005E1C9 /* Corekit in Frameworks */ = {isa = PBXBuildFile; productRef = 0426289D2DD618180005E1C9 /* Corekit */; };
+		042629BC2DD6AA190005E1C9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 042629BB2DD6AA190005E1C9 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0426289E2DD618180005E1C9 /* Corekit in Frameworks */,
+				042629BC2DD6AA190005E1C9 /* SnapKit in Frameworks */,
 				0418C6C82DD506720096BD4D /* Commons in Frameworks */,
 				0418C7E42DD511F60096BD4D /* CombineCocoa in Frameworks */,
 				0426289B2DD617AE0005E1C9 /* Commons in Frameworks */,
@@ -102,6 +104,7 @@
 				042628972DD616C90005E1C9 /* Commons */,
 				0426289A2DD617AE0005E1C9 /* Commons */,
 				0426289D2DD618180005E1C9 /* Corekit */,
+				042629BB2DD6AA190005E1C9 /* SnapKit */,
 			);
 			productName = "Tru-Task";
 			productReference = 0418C4232DD3830B0096BD4D /* Tru-Task.app */;
@@ -137,6 +140,7 @@
 				0418C9012DD60EA70096BD4D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				042628992DD617AE0005E1C9 /* XCLocalSwiftPackageReference "Commons" */,
 				0426289C2DD618180005E1C9 /* XCLocalSwiftPackageReference "Corekit" */,
+				042629BA2DD6AA190005E1C9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0418C4242DD3830B0096BD4D /* Products */;
@@ -397,6 +401,14 @@
 				minimumVersion = 8.3.2;
 			};
 		};
+		042629BA2DD6AA190005E1C9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -429,6 +441,11 @@
 		0426289D2DD618180005E1C9 /* Corekit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Corekit;
+		};
+		042629BB2DD6AA190005E1C9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 042629BA2DD6AA190005E1C9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
