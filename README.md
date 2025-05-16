@@ -90,6 +90,6 @@ Packages/
 
 **Mostafa Mahmoud**  
 iOS Engineer | Clean Architecture Advocate  
-[LinkedIn](https://www.linkedin.com/in/mostafa-mahmoud) • [GitHub](https://github.com/yourusername)
+[LinkedIn](https://www.linkedin.com/in/mostafa-mahmoud-bb192a168/) • [GitHub](https://github.com/yourusername)
 
 ---
