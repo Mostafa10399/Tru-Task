@@ -41,6 +41,15 @@ public class HomeRootViewController: NiblessViewController {
 //        observeErrorMessages()
         bindViewModel()
         viewModel.getData()
+        bindView()
+    }
+    
+    override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    private func bindView() {
         customView.segmentedControl.selectedSegmentIndexPublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] index in
@@ -51,11 +60,8 @@ public class HomeRootViewController: NiblessViewController {
             }
             .store(in: &cancellables)
         customView.tableView.didSelectRowPublisher.receive(subscriber: viewModel.selectedItemSubscriber)
-    }
-    
-    override public func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+        customView.collectionView.didSelectItemPublisher.receive(subscriber: viewModel.selectedItemSubscriber)
+
     }
     
     private func bindViewModel() {

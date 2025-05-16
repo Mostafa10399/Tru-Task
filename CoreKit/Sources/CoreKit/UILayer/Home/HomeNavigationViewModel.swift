@@ -13,11 +13,11 @@ public class HomeNavigationViewModel: GoToProductDetails {
         view = .root
     }
     
-    public func navigateToProductDetails() {
-        view = .details
+    public func navigateToProductDetails(with product: Product) {
+        view = .details(product: product)
     }
 }
 
 public protocol GoToProductDetails {
-    func navigateToProductDetails()
+    func navigateToProductDetails(with product: Product)
 }

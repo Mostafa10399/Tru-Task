@@ -9,16 +9,21 @@ final class HomeViewController: NiblessNavigationController {
     
     private let viewModel: HomeNavigationViewModel
     private let rootViewController: HomeRootViewController
+    private let makeProductDetailsViewController: ((Product) -> ProductDetailsViewController)
+
     private var cancelable: Set<AnyCancellable> = []
     
     // MARK: - Methods
     
     init(
         viewModel: HomeNavigationViewModel,
-        rootViewController: HomeRootViewController
+        rootViewController: HomeRootViewController,
+        productDetailsViewControllerFactory: @escaping (Product) -> ProductDetailsViewController
+
     ) {
         self.viewModel = viewModel
         self.rootViewController = rootViewController
+        self.makeProductDetailsViewController = productDetailsViewControllerFactory
         super.init()
     }
     
@@ -47,12 +52,16 @@ final class HomeViewController: NiblessNavigationController {
         switch view {
         case .root:
             presentHomeRootView()
-        case .details:
-            print("Details")
+        case let .details(product):
+            presentProductDetails(product: product)
         }
     }
     
     private func presentHomeRootView() {
         popToRootViewController(animated: false)
+    }
+    
+    private func presentProductDetails(product: Product) {
+        pushViewController(makeProductDetailsViewController(product), animated: true)
     }
 }

@@ -18,8 +18,13 @@ class HomeDependencyContainer {
     }
     
     public func makeHomeViewController() -> HomeViewController {
+        let productDetailsViewControllerFactory = { product in
+            let viewModel = self.makeProductDetailsViewModel(product: product)
+            return self.makeProductDetailsViewController(viewModel: viewModel)
+        }
         return HomeViewController(viewModel: sharedHomeViewModel,
-                                  rootViewController: makeRootViewController())
+                                  rootViewController: makeRootViewController(),
+                                  productDetailsViewControllerFactory: productDetailsViewControllerFactory)
     }
     
     private func makeRootViewController() -> HomeRootViewController {
@@ -38,5 +43,13 @@ class HomeDependencyContainer {
     
     private func makeHomeRootView() -> HomeRootView {
         HomeRootView()
+    }
+    
+    private func makeProductDetailsViewModel(product: Product) -> ProductDetailsViewModel {
+        ProductDetailsViewModel(product: product)
+    }
+    
+    private func makeProductDetailsViewController(viewModel: ProductDetailsViewModel) -> ProductDetailsViewController{
+        ProductDetailsViewController(view: ProductDetailsView(), viewModel: viewModel)
     }
 }

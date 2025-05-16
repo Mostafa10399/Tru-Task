@@ -14,7 +14,6 @@ public final class HomeRootViewModel: GetProductsUsecase {
     private let errorMessagesSubject = PassthroughSubject<APIError, Never>()
     private let isLoadingSubject = CurrentValueSubject<Bool, Never>(false)
     public let selectItemSubject = PassthroughSubject<IndexPath, Never>()
-    public let selectSegmentSubject = PassthroughSubject<Int, Never>()
 
     
     public var productsPublisher: AnyPublisher<ProductList, Never> {
@@ -29,10 +28,7 @@ public final class HomeRootViewModel: GetProductsUsecase {
     public var selectedItemSubscriber: AnySubscriber<IndexPath, Never> {
         AnySubscriber(selectItemSubject)
     }
-    public var selectedSegment: AnySubscriber<Int, Never> {
-        AnySubscriber(selectSegmentSubject)
-    }
-    
+
     private var cancelables: Set<AnyCancellable> = []
     
     // MARK: - Methods
@@ -56,6 +52,13 @@ public final class HomeRootViewModel: GetProductsUsecase {
     }
     
     private func subscribeToSelectItem() {
+        selectItemSubject
+            .sink { [weak self] indexPath in
+                guard let self  else { return }
+                let selectedProduct = self.productsSubject.value[indexPath.row]
+                self.navigator.navigateToProductDetails(with: selectedProduct)
+            }
+            .store(in: &cancelables)
     }
 
 
